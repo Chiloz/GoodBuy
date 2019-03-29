@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F22EAA72246A3E4000DBA53 /* goodbuy-logo-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F22EAA62246A3E4000DBA53 /* goodbuy-logo-2.png */; };
+		3FB8B3EB224E15BF00292A9B /* ManualLocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8B3EA224E15BF00292A9B /* ManualLocViewController.swift */; };
 		DC1FADEF223BDF210095D0EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1FADEE223BDF210095D0EE /* AppDelegate.swift */; };
 		DC1FADF1223BDF210095D0EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1FADF0223BDF210095D0EE /* ViewController.swift */; };
 		DC1FADF4223BDF210095D0EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC1FADF2223BDF210095D0EE /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		3F22EAA62246A3E4000DBA53 /* goodbuy-logo-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "goodbuy-logo-2.png"; path = "../../../../Downloads/icons/goodbuy-logo-2.png"; sourceTree = "<group>"; };
+		3FB8B3EA224E15BF00292A9B /* ManualLocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualLocViewController.swift; sourceTree = "<group>"; };
 		DC1FADEB223BDF210095D0EE /* GoodBuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodBuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC1FADEE223BDF210095D0EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC1FADF0223BDF210095D0EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			children = (
 				DC1FADEE223BDF210095D0EE /* AppDelegate.swift */,
 				DC1FADF0223BDF210095D0EE /* ViewController.swift */,
+				3FB8B3EA224E15BF00292A9B /* ManualLocViewController.swift */,
 				DC1FADF2223BDF210095D0EE /* Main.storyboard */,
 				DC1FADF5223BDF210095D0EE /* Assets.xcassets */,
 				DC1FADF7223BDF210095D0EE /* LaunchScreen.storyboard */,
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC1FADF1223BDF210095D0EE /* ViewController.swift in Sources */,
+				3FB8B3EB224E15BF00292A9B /* ManualLocViewController.swift in Sources */,
 				DC1FADEF223BDF210095D0EE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,21 +15,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var button: UIButton!
     
+    
+    let authorizationStatus = CLLocationManager.authorizationStatus()
     let manager = CLLocationManager()
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         let location = locations[0]
         
-        //let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        //let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-        //let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
-        //map.setRegion(region, animated: true)
-        
-        print(location.altitude)
-        print(location.speed)
-        
-        //self.map.showsUserLocation = true
+    
         
         CLGeocoder().reverseGeocodeLocation(location) { (placemark, error) in
             if error != nil
@@ -50,7 +44,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     }
                 }
             }
-        }
+        } 
     }
     
 
@@ -59,10 +53,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
+        if authorizationStatus == .denied || authorizationStatus == .restricted {
+            print("location denied")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let manuallocVC = storyboard.instantiateViewController(withIdentifier: "ManualLocViewController")as!
+            self.navigationController?.pushViewController(manuallocVC, animated: true)
+        }
+        else{
+            print("location allowed")
+        }
         manager.startUpdatingLocation()
         button.layer.cornerRadius = 10;
         button.clipsToBounds = true;
-       
        
     }
     
