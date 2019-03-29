@@ -21,7 +21,6 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-<<<<<<< HEAD
     var souvenirs = [Souvenir]()
     var stringJSON = "-RTF.json"
 
@@ -31,28 +30,6 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
     let countryCode = "RUB"
     var hoeveelheidGeld: Double = 5000
     let conversionRate: Double = 1/118
-=======
-    let souvenirNames = ["Serbian Mug", "Burek", "Balkan doll", "Postcard", "Serbian flag", "Serbian badge", "Serbian Mug", "Burek", "Balkan doll", "Postcard", "Serbian flag", "Serbian badge"]
-    
-    let souvenirImages: [UIImage] = [
-        
-        UIImage(named: "serbianmug")!,
-        UIImage(named: "burek")!,
-        UIImage(named: "balkandoll")!,
-        UIImage(named: "postcard")!,
-        UIImage(named: "serbianflag")!,
-        UIImage(named: "serbianeagle")!,
-        UIImage(named: "serbianmug")!,
-        UIImage(named: "burek")!,
-        UIImage(named: "balkandoll")!,
-        UIImage(named: "postcard")!,
-        UIImage(named: "serbianflag")!,
-        UIImage(named: "serbianeagle")!
-        
-    ]
-    
-    let souvenirPrices = [690, 450, 1900, 70, 920, 450, 690, 450, 1900, 70, 920, 450]
->>>>>>> f3ea22410b490f52b0c4d08c472c8e8a6eabc4b5
     
     var selectedSouvenirs = [Int]()
     
@@ -60,7 +37,6 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-<<<<<<< HEAD
         
         let url = "https://www.noelherwig.com/"
         
@@ -111,18 +87,11 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.souvenirs.count
-=======
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return souvenirNames.count
->>>>>>> f3ea22410b490f52b0c4d08c472c8e8a6eabc4b5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
         
-<<<<<<< HEAD
         cell.labelSouvenirName.text = self.souvenirs[indexPath.row].name
         
         let imageURL = URL(string: self.souvenirs[indexPath.row].imageURL!)
@@ -132,11 +101,6 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
         
         
         cell.labelSouvenirPrice.text = String(format: "%.2f",self.souvenirs[indexPath.row].price!)
-=======
-        cell.labelSouvenirName.text = souvenirNames[indexPath.item]
-        cell.imageViewSouvenir.image = souvenirImages[indexPath.item]
-        cell.labelSouvenirPrice.text = String(souvenirPrices[indexPath.item])
->>>>>>> f3ea22410b490f52b0c4d08c472c8e8a6eabc4b5
         
         return cell
     }
@@ -147,7 +111,6 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
             cell?.layer.backgroundColor = UIColorFromHex(rgbValue: 0xD35451).cgColor
             selectedSouvenirs = selectedSouvenirs.filter(){$0 != indexPath.item}
             
-<<<<<<< HEAD
             hoeveelheidGeld += self.souvenirs[indexPath.row].price!
             labelForeignAmount.text = String(format: "%.2f", hoeveelheidGeld)
             labelHomeAmount.text = String(format: "%.2f", conversionRate * hoeveelheidGeld)
@@ -155,17 +118,12 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
                 labelForeignAmount.textColor = UIColor.white
             }
 
-=======
-//            teBesteden += souvenirPrices[indexPath.item]
-//            labelTeBesteden.text = String(teBesteden)
->>>>>>> f3ea22410b490f52b0c4d08c472c8e8a6eabc4b5
         }
         else {
             let cell = collectionView.cellForItem(at: indexPath)
             cell?.layer.backgroundColor = UIColorFromHex(rgbValue: 0x70C4D3).cgColor
             selectedSouvenirs.append(indexPath.item)
             
-<<<<<<< HEAD
             hoeveelheidGeld -= self.souvenirs[indexPath.row].price!
             labelForeignAmount.text = String(format: "%.2f", hoeveelheidGeld)
             labelHomeAmount.text = String(format: "%.2f", conversionRate * hoeveelheidGeld)
@@ -174,14 +132,6 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
             }
 
         }
-=======
-//            teBesteden -= souvenirPrices[indexPath.item]
-//            labelTeBesteden.text = String(teBesteden)
-        }
-        //        let cell = collectionView.cellForItem(at: indexPath)
-        //        cell?.layer.backgroundColor = UIColorFromHex(rgbValue: 0x70C4D3).cgColor
-        
->>>>>>> f3ea22410b490f52b0c4d08c472c8e8a6eabc4b5
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
