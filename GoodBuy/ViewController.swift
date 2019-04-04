@@ -16,6 +16,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var button: UIButton!
     
     
+    var countryCode: String = ""
+    var countryName: String = ""
+    
     let authorizationStatus = CLLocationManager.authorizationStatus()
     let manager = CLLocationManager()
     
@@ -39,6 +42,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     if let checker = place.locality
                     {
                         self.label.text = "\(place.locality!), \n \(place.country!) "
+                        self.countryCode = place.isoCountryCode!;
+                        self.countryName = place.country!
+                        print(self.countryCode)
                     }
                     else
                     {
@@ -81,15 +87,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 //            print("location denied")
 //
 //        }
+        self.navigationController!.isNavigationBarHidden = true;
         manager.startUpdatingLocation()
-        button.layer.cornerRadius = 10;
         button.clipsToBounds = true;
        
     }
     
-   
-    
-   
+    @IBAction func buttonContinue(_ sender: Any) {
+//        if let VC = self.storyboard?.instantiateViewController(withIdentifier: "CurrencyConverterController") as? CurrencyConverterController {
+
+//            self.ViewController!.pushViewController(VC, animated: true)
+//        }
+        let VC = self.storyboard?.instantiateViewController(withIdentifier: "CurrencyConverterController") as! CurrencyConverterController
+        let navigationController = UINavigationController(rootViewController: VC)
+        VC.countryName = countryName
+        self.present(navigationController, animated: true, completion: nil)
+    }
 
    
     

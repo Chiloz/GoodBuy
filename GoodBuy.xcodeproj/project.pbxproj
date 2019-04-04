@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3FB8B3EB224E15BF00292A9B /* ManualLocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8B3EA224E15BF00292A9B /* ManualLocViewController.swift */; };
-		3FB8B3F1224E24CD00292A9B /* goodbuy-logo-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB8B3F0224E24CC00292A9B /* goodbuy-logo-2.png */; };
+		3FB8B3F1224E24CD00292A9B /* (null) in Resources */ = {isa = PBXBuildFile; };
 		DC1FADEF223BDF210095D0EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1FADEE223BDF210095D0EE /* AppDelegate.swift */; };
 		DC1FADF1223BDF210095D0EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1FADF0223BDF210095D0EE /* ViewController.swift */; };
 		DC1FADF4223BDF210095D0EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC1FADF2223BDF210095D0EE /* Main.storyboard */; };
@@ -17,12 +16,12 @@
 		DC515C5222455E700087C369 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC515C5122455E700087C369 /* CollectionViewCell.swift */; };
 		DC515C55224655660087C369 /* Souvenir.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC515C54224655660087C369 /* Souvenir.swift */; };
 		DCB146BF2255F81100FB33AF /* buttonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB146BE2255F81100FB33AF /* buttonViewController.swift */; };
+		DCB146C12256041E00FB33AF /* CurrencyConverterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB146C02256041E00FB33AF /* CurrencyConverterController.swift */; };
 		DCD766942255E7BA003667AC /* goodbuy-logo-2.png in Resources */ = {isa = PBXBuildFile; fileRef = DCD766932255E7BA003667AC /* goodbuy-logo-2.png */; };
 		DCDD280A22452CDD00B73208 /* ShopMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDD280922452CDD00B73208 /* ShopMenuController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3FB8B3EA224E15BF00292A9B /* ManualLocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualLocViewController.swift; sourceTree = "<group>"; };
 		DC1FADEB223BDF210095D0EE /* GoodBuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodBuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC1FADEE223BDF210095D0EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC1FADF0223BDF210095D0EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,6 +32,7 @@
 		DC515C5122455E700087C369 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		DC515C54224655660087C369 /* Souvenir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Souvenir.swift; sourceTree = "<group>"; };
 		DCB146BE2255F81100FB33AF /* buttonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonViewController.swift; sourceTree = "<group>"; };
+		DCB146C02256041E00FB33AF /* CurrencyConverterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterController.swift; sourceTree = "<group>"; };
 		DCD766932255E7BA003667AC /* goodbuy-logo-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goodbuy-logo-2.png"; sourceTree = "<group>"; };
 		DCDD280922452CDD00B73208 /* ShopMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopMenuController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,8 +79,8 @@
 				DC515C5122455E700087C369 /* CollectionViewCell.swift */,
 				DC1FADEE223BDF210095D0EE /* AppDelegate.swift */,
 				DC1FADF0223BDF210095D0EE /* ViewController.swift */,
-				3FB8B3EA224E15BF00292A9B /* ManualLocViewController.swift */,
 				DC1FADF2223BDF210095D0EE /* Main.storyboard */,
+				DCB146C02256041E00FB33AF /* CurrencyConverterController.swift */,
 				DCB146BE2255F81100FB33AF /* buttonViewController.swift */,
 				DCDD280922452CDD00B73208 /* ShopMenuController.swift */,
 				DC1FADF5223BDF210095D0EE /* Assets.xcassets */,
@@ -161,7 +161,7 @@
 				DC1FADF9223BDF210095D0EE /* LaunchScreen.storyboard in Resources */,
 				DC1FADF6223BDF210095D0EE /* Assets.xcassets in Resources */,
 				DC1FADF4223BDF210095D0EE /* Main.storyboard in Resources */,
-				3FB8B3F1224E24CD00292A9B /* goodbuy-logo-2.png in Resources */,
+				3FB8B3F1224E24CD00292A9B /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +177,7 @@
 				DC515C55224655660087C369 /* Souvenir.swift in Sources */,
 				DCDD280A22452CDD00B73208 /* ShopMenuController.swift in Sources */,
 				DC515C5222455E700087C369 /* CollectionViewCell.swift in Sources */,
-				3FB8B3EB224E15BF00292A9B /* ManualLocViewController.swift in Sources */,
+				DCB146C12256041E00FB33AF /* CurrencyConverterController.swift in Sources */,
 				DC1FADEF223BDF210095D0EE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

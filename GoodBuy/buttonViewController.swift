@@ -10,9 +10,18 @@ import UIKit
 
 class buttonViewController: UIViewController {
 
+    var conversion: Double = 0
+    var currency: String = ""
+    var countryName: String = ""
+    var moneyAmount: Double = 0
+    
     @IBAction func buttonPressed0(_ sender: Any) {
         if let VC = self.storyboard?.instantiateViewController(withIdentifier: "ShopMenuController") as? ShopMenuController {
             VC.selectedScreen = 0
+            VC.conversion = conversion
+            VC.currency = currency
+            VC.countryName = countryName
+            VC.moneyAmount = moneyAmount
             self.navigationController!.pushViewController(VC, animated: true)
         }
     }
@@ -20,6 +29,10 @@ class buttonViewController: UIViewController {
     @IBAction func buttonPressed1(_ sender: Any) {
         if let VC = self.storyboard?.instantiateViewController(withIdentifier: "ShopMenuController") as? ShopMenuController {
             VC.selectedScreen = 1
+            VC.conversion = conversion
+            VC.currency = currency
+            VC.countryName = countryName
+            VC.moneyAmount = moneyAmount
             self.navigationController!.pushViewController(VC, animated: true)
         }
     }
@@ -27,6 +40,10 @@ class buttonViewController: UIViewController {
     @IBAction func buttonPressed2(_ sender: Any) {
         if let VC = self.storyboard?.instantiateViewController(withIdentifier: "ShopMenuController") as? ShopMenuController {
             VC.selectedScreen = 2
+            VC.conversion = conversion
+            VC.currency = currency
+            VC.countryName = countryName
+            VC.moneyAmount = moneyAmount
             self.navigationController!.pushViewController(VC, animated: true)
         }
     }

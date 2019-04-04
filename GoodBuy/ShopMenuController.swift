@@ -26,10 +26,12 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
     var selectedScreen = 0
     
     
+    
     // Deze gegevens krijgen we van andere pagina's
-    let countryCode = "RUB"
-    var hoeveelheidGeld: Double = 5000
-    let conversionRate: Double = 1/118
+    var moneyAmount: Double = 0
+    var countryName: String = ""
+    var currency: String = ""
+    var conversion: Double = 0
     
     var selectedSouvenirs = [Int]()
     
@@ -38,7 +40,7 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        let url = "https://www.noelherwig.com/"
+        let url = "https://www.noelherwig.com/goodbuy-files/"
         
         print(selectedScreen)
         
@@ -56,12 +58,16 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
             stringJSON = "-RTF.json"
         }
         
-        let urlOutput = URL(string: "\(url)\(countryCode)\(stringJSON)")
+        let countryNameStripped = countryName.replacingOccurrences(of: " ", with: "")
+        
+        let urlOutput = URL(string: "\(url)\(countryNameStripped)\(stringJSON)")
 
-        labelForeignCurrency.text = countryCode
-        labelForeignAmount.text = String(format: "%.2f", hoeveelheidGeld)
+        print(urlOutput)
+        
+        labelForeignCurrency.text = currency
+        labelForeignAmount.text = String(format: "%.2f", moneyAmount)
         labelHomeCurrency.text = "EUR"
-        labelHomeAmount.text = String(format: "%.2f", conversionRate * hoeveelheidGeld)
+        labelHomeAmount.text = String(format: "%.2f", conversion * moneyAmount)
 
         
         URLSession.shared.dataTask(with: urlOutput!) { (data, response, error) in
@@ -112,10 +118,10 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
             cell?.layer.backgroundColor = UIColorFromHex(rgbValue: 0xD35451).cgColor
             selectedSouvenirs = selectedSouvenirs.filter(){$0 != indexPath.item}
             
-            hoeveelheidGeld += self.souvenirs[indexPath.row].price!
-            labelForeignAmount.text = String(format: "%.2f", hoeveelheidGeld)
-            labelHomeAmount.text = String(format: "%.2f", conversionRate * hoeveelheidGeld)
-            if (hoeveelheidGeld > 0) {
+            moneyAmount += self.souvenirs[indexPath.row].price!
+            labelForeignAmount.text = String(format: "%.2f", moneyAmount)
+            labelHomeAmount.text = String(format: "%.2f", conversion * moneyAmount)
+            if (moneyAmount > 0) {
                 labelForeignAmount.textColor = UIColor.white
                 labelHomeAmount.textColor = UIColor.white
             }
@@ -126,10 +132,10 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
             cell?.layer.backgroundColor = UIColorFromHex(rgbValue: 0x70C4D3).cgColor
             selectedSouvenirs.append(indexPath.item)
             
-            hoeveelheidGeld -= self.souvenirs[indexPath.row].price!
-            labelForeignAmount.text = String(format: "%.2f", hoeveelheidGeld)
-            labelHomeAmount.text = String(format: "%.2f", conversionRate * hoeveelheidGeld)
-            if (hoeveelheidGeld < 0) {
+            moneyAmount -= self.souvenirs[indexPath.row].price!
+            labelForeignAmount.text = String(format: "%.2f", moneyAmount)
+            labelHomeAmount.text = String(format: "%.2f", conversion * moneyAmount)
+            if (moneyAmount < 0) {
                 labelForeignAmount.textColor = UIColorFromHex(rgbValue: 0xEF6663)
                 labelHomeAmount.textColor = UIColorFromHex(rgbValue: 0xEF6663)
             }
