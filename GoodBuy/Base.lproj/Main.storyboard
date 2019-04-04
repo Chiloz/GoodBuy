@@ -41,7 +41,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="4Yc-UU-cqY" kind="show" id="SzP-bY-zFO"/>
+                                    <segue destination="4Yc-UU-cqY" kind="show" id="nk2-2c-SGi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -71,26 +71,60 @@
         <!--Manual Location-->
         <scene sceneID="PeQ-Kz-qgI">
             <objects>
-                <viewController storyboardIdentifier="ManualLocViewController" title="Manual Location" id="4Yc-UU-cqY" customClass="ManualLocViewController" customModule="GoodBuy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Manual Location" id="4Yc-UU-cqY" customClass="ManualLocViewController" customModule="GoodBuy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rbU-ut-62V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Where are you now?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6w3-Ep-Z2z">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you now?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6w3-Ep-Z2z">
                                 <rect key="frame" x="16" y="88" width="185" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rdj-1f-ztP">
+                                <rect key="frame" x="92" y="165" width="191" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textBox:" destination="4OL-q1-okZ" eventType="editingDidEnd" id="WY1-9j-vEi"/>
+                                    <outlet property="delegate" destination="4Yc-UU-cqY" id="Psv-uL-CnU"/>
+                                </connections>
+                            </textField>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rmF-7x-eV0">
+                                <rect key="frame" x="92" y="194" width="191" height="133"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="133" id="zDe-Ih-x3R"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="4Yc-UU-cqY" id="49I-EL-eyi"/>
+                                    <outlet property="delegate" destination="4Yc-UU-cqY" id="ROn-pI-Swk"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="0.87222570180892944" green="0.43219774961471558" blue="0.4078252911567688" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="8km-fi-Sb3" firstAttribute="bottom" secondItem="Rdj-1f-ztP" secondAttribute="bottom" constant="583" id="4TG-l5-FaP"/>
+                            <constraint firstItem="rmF-7x-eV0" firstAttribute="trailing" secondItem="Rdj-1f-ztP" secondAttribute="trailing" id="5fU-aX-7LQ"/>
+                            <constraint firstItem="rmF-7x-eV0" firstAttribute="leading" secondItem="Rdj-1f-ztP" secondAttribute="leading" id="6NN-Br-Bfr"/>
+                            <constraint firstItem="Rdj-1f-ztP" firstAttribute="leading" secondItem="8km-fi-Sb3" secondAttribute="leading" constant="92" id="6kA-Lc-EMG"/>
+                            <constraint firstItem="Rdj-1f-ztP" firstAttribute="centerX" secondItem="rbU-ut-62V" secondAttribute="centerX" id="XLe-Ty-AbY"/>
+                            <constraint firstItem="rmF-7x-eV0" firstAttribute="top" secondItem="6w3-Ep-Z2z" secondAttribute="bottom" constant="80" id="gTb-vs-wxF"/>
+                            <constraint firstItem="6w3-Ep-Z2z" firstAttribute="leading" secondItem="rbU-ut-62V" secondAttribute="leadingMargin" id="qVg-Ny-F68"/>
+                            <constraint firstItem="6w3-Ep-Z2z" firstAttribute="top" secondItem="8km-fi-Sb3" secondAttribute="top" constant="44" id="wAg-3Z-PBe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8km-fi-Sb3"/>
                     </view>
+                    <connections>
+                        <outlet property="dropDown" destination="rmF-7x-eV0" id="Fs5-qp-ho4"/>
+                        <outlet property="textBox" destination="Rdj-1f-ztP" id="zWJ-Bc-3Kl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4DT-Fr-2uA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="4OL-q1-okZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1079" y="845"/>
+            <point key="canvasLocation" x="1077.5999999999999" y="844.58128078817742"/>
         </scene>
     </scenes>
 </document>
