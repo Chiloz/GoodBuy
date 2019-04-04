@@ -22,8 +22,8 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var collectionView: UICollectionView!
     
     var souvenirs = [Souvenir]()
-    var stringJSON = "-RTF.json"
-
+    var stringJSON = ""
+    var selectedScreen = 0
     
     
     // Deze gegevens krijgen we van andere pagina's
@@ -40,19 +40,20 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
         
         let url = "https://www.noelherwig.com/"
         
-        switch tabBarController!.selectedIndex {
+        print(selectedScreen)
+        
+        switch selectedScreen {
         case 0:
-            stringJSON = "-OMW.json"
-            print(tabBarController?.selectedIndex)
-        case 1:
-            stringJSON = "-HTS.json"
-            print(tabBarController?.selectedIndex)
-        case 2:
             stringJSON = "-RTF.json"
-            print(tabBarController?.selectedIndex)
+            self.title = "Ready to fly";
+        case 1:
+            stringJSON = "-OMW.json"
+            self.title = "On my way";
+        case 2:
+            stringJSON = "-HTS.json"
+            self.title = "Here to stay";
         default:
             stringJSON = "-RTF.json"
-            print(tabBarController?.selectedIndex)
         }
         
         let urlOutput = URL(string: "\(url)\(countryCode)\(stringJSON)")
@@ -116,6 +117,7 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
             labelHomeAmount.text = String(format: "%.2f", conversionRate * hoeveelheidGeld)
             if (hoeveelheidGeld > 0) {
                 labelForeignAmount.textColor = UIColor.white
+                labelHomeAmount.textColor = UIColor.white
             }
 
         }
@@ -128,7 +130,8 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
             labelForeignAmount.text = String(format: "%.2f", hoeveelheidGeld)
             labelHomeAmount.text = String(format: "%.2f", conversionRate * hoeveelheidGeld)
             if (hoeveelheidGeld < 0) {
-                labelForeignAmount.textColor = UIColor.red
+                labelForeignAmount.textColor = UIColorFromHex(rgbValue: 0xEF6663)
+                labelHomeAmount.textColor = UIColorFromHex(rgbValue: 0xEF6663)
             }
 
         }
