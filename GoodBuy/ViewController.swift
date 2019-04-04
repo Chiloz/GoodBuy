@@ -15,26 +15,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var button: UIButton!
     
+    
+    let authorizationStatus = CLLocationManager.authorizationStatus()
     let manager = CLLocationManager()
+    
+    
+    
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         let location = locations[0]
         
-        //let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        //let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-        //let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
-        //map.setRegion(region, animated: true)
-        
-        print(location.altitude)
-        print(location.speed)
-        
-        //self.map.showsUserLocation = true
         
         CLGeocoder().reverseGeocodeLocation(location) { (placemark, error) in
             if error != nil
             {
-                print("THERE WAS AN ERROR")
+                //print("THERE WAS AN ERROR")
             }
             else
             {
@@ -46,11 +42,33 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     }
                     else
                     {
-                        self.label.text = "NO SIGNAL"
+                        //self.label.text = "NO SIGNAL"
                     }
                 }
             }
+        } 
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if(status == CLAuthorizationStatus.denied) {
+            showLocationDisabledPopUp()
         }
+    }
+    
+    func showLocationDisabledPopUp() {
+        let alertController = UIAlertController(title: "Location is disabled", message: "Location needed for the services", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let openAction = UIAlertAction(title: "Open settings", style: .default){ (action)  in
+            if let url = URL(string: UIApplication.openSettingsURLString){
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+        alertController.addAction(openAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
 
@@ -59,10 +77,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
+//        if authorizationStatus == .denied || authorizationStatus == .restricted {
+//            print("location denied")
+//
+//        }
         manager.startUpdatingLocation()
         button.layer.cornerRadius = 10;
         button.clipsToBounds = true;
-       
        
     }
     
