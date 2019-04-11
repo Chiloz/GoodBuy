@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurrencyConverterController: UIViewController {
+class CurrencyConverterController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var labelHomeAmount: UILabel!
     @IBOutlet weak var labelHomeCurrency: UILabel!
     @IBOutlet weak var labelForeignCurrency: UILabel!
@@ -71,9 +71,13 @@ class CurrencyConverterController: UIViewController {
         super.viewDidLoad()
         
         buttonConfirm.isEnabled = false
-
-        labelForeignCountry.text = "Welcome to \(countryName)!"
         
+        if countryName == "Netherlands" || countryName == "United Kingdom" {
+            labelForeignCountry.text = "Welcome to the \(countryName)!"
+        }
+        else {
+            labelForeignCountry.text = "Welcome to \(countryName)!"
+        }
         textField.becomeFirstResponder()
         self.navigationController!.isNavigationBarHidden = true;
         
@@ -97,9 +101,11 @@ class CurrencyConverterController: UIViewController {
             currency = "BRL"
             conversion = 0.22994
         default:
-            currency = "RUB"
+            currency = "EUR"
             conversion = 1
         }
+        
+        textField.delegate = self
         
         labelForeignCurrency.text = currency
     }
@@ -112,5 +118,15 @@ class CurrencyConverterController: UIViewController {
         let blue = CGFloat(rgbValue & 0xFF)/256.0
         
         return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let currentCharacterCount = textField.text?.count ?? 0
+        if range.length + range.location > currentCharacterCount {
+            return false
+        }
+        let newLength = currentCharacterCount + string.count - range.length
+        return newLength <= 9
     }
 }

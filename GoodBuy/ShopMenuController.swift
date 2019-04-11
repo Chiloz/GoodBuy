@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 // Samet doe niks in deze ding programmeren
 // Deze is voor dat menu met die knoppen waar je souvenirs kunt kiezen
@@ -40,6 +41,9 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView.dataSource = self
         collectionView.delegate = self
         
+        self.navigationController!.isNavigationBarHidden = false;
+
+        
         let url = "https://www.noelherwig.com/goodbuy-files/"
         
         print(selectedScreen)
@@ -47,13 +51,13 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
         switch selectedScreen {
         case 0:
             stringJSON = "-RTF.json"
-            self.title = "Ready to fly";
+            self.title = "About to leave";
         case 1:
             stringJSON = "-OMW.json"
-            self.title = "On my way";
+            self.title = "Some time left";
         case 2:
             stringJSON = "-HTS.json"
-            self.title = "Here to stay";
+            self.title = "Few days left";
         default:
             stringJSON = "-RTF.json"
         }
@@ -138,6 +142,7 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
             if (moneyAmount < 0) {
                 labelForeignAmount.textColor = UIColorFromHex(rgbValue: 0xEF6663)
                 labelHomeAmount.textColor = UIColorFromHex(rgbValue: 0xEF6663)
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))            
             }
 
         }
@@ -157,5 +162,19 @@ class ShopMenuController: UIViewController, UICollectionViewDelegate, UICollecti
         
         return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParent {
+            self.navigationController!.isNavigationBarHidden = true;
+        }
+    }
 
+    @IBAction func buttonChangeAmount(_ sender: Any) {
+        if let VC = self.storyboard?.instantiateViewController(withIdentifier: "CurrencyConverterController") as? CurrencyConverterController {
+            VC.countryName = countryName
+            self.navigationController!.pushViewController(VC, animated: true)
+        }
+    }
 }
