@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class CurrencyConverterController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var labelHomeAmount: UILabel!
@@ -100,6 +101,9 @@ class CurrencyConverterController: UIViewController, UITextFieldDelegate {
         case "Brazil":
             currency = "BRL"
             conversion = 0.22994
+        case "Netherlands":
+            currency = "EUR"
+            conversion = 1
         default:
             currency = "EUR"
             conversion = 1
@@ -126,7 +130,10 @@ class CurrencyConverterController: UIViewController, UITextFieldDelegate {
         if range.length + range.location > currentCharacterCount {
             return false
         }
+        if currentCharacterCount == 5 {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        }
         let newLength = currentCharacterCount + string.count - range.length
-        return newLength <= 9
+        return newLength <= 5
     }
 }
