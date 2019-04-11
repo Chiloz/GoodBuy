@@ -44,7 +44,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         self.label.text = "\(place.locality!), \n \(place.country!) "
                         self.countryCode = place.isoCountryCode!;
                         self.countryName = place.country!
-                        print(self.countryCode)
+                        self.button.isEnabled = true
+                        self.button.backgroundColor = self.UIColorFromHex(rgbValue: 0xD35451)
+                        //print(self.countryCode)
                     }
                     else
                     {
@@ -62,9 +64,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func showLocationDisabledPopUp() {
-        let alertController = UIAlertController(title: "Location is disabled", message: "Location needed for the services", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Location is disabled", message: "Location is needed for the services", preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         
         let openAction = UIAlertAction(title: "Open settings", style: .default){ (action)  in
@@ -89,6 +91,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 //        }
         self.navigationController!.isNavigationBarHidden = true;
         manager.startUpdatingLocation()
+        button.isEnabled = false
+        button.backgroundColor = UIColorFromHex(rgbValue: 0xE4E4E4)
         button.clipsToBounds = true;
        
     }
@@ -102,6 +106,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let navigationController = UINavigationController(rootViewController: VC)
         VC.countryName = countryName
         self.present(navigationController, animated: true, completion: nil)
+    }
+    
+    func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
+        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
+        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
+        let blue = CGFloat(rgbValue & 0xFF)/256.0
+        
+        return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
     }
 
    
